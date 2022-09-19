@@ -1,7 +1,7 @@
-TypeScript React Hox Demo
+TypeScript React Hox Multiple Global Stores Demo
 =================================
 
-使用hox来管理状态
+使用多个global stores来一起管理状态， store之间可以互相引用
 
 ```
 npm install

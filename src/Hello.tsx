@@ -2,12 +2,13 @@ import React, {FC} from 'react';
 import './Hello.pcss';
 import {Version} from "./Version";
 import {User} from "./User";
+import {HoxRoot} from "hox";
 
 type Props = {};
 
 export const Hello: FC<Props> = ({}) => {
-    return <div>
+    return <HoxRoot>
         <Version/>
         <User/>
-    </div>;
+    </HoxRoot>;
 }
