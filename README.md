@@ -1,7 +1,7 @@
-TypeScript React Hox Multiple Global with use-request Demo
+TypeScript React Hox with use-context Demo
 =================================
 
-当把 use-request 放在store里，不用cache key，也可以正常共享状态了
+在hox store里使用 use-context
 
 ```
 npm install
