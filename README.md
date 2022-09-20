@@ -1,7 +1,7 @@
-TypeScript React Hox Multiple Global Stores Demo
+TypeScript React Hox Multiple Global with use-request Demo
 =================================
 
-使用多个global stores来一起管理状态， store之间可以互相引用
+当把 use-request 放在store里，不用cache key，也可以正常共享状态了
 
 ```
 npm install
