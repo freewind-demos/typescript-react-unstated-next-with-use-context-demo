@@ -6,7 +6,8 @@
     "ahooks": "^3.7.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "ts-node": "10.3.0"
+    "ts-node": "10.3.0",
+    "unstated-next": "^1.1.0"
   },
   "devDependencies": {
     "@types/node": "16.11.0",

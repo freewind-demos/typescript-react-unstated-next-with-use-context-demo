@@ -1,13 +1,12 @@
 import {useCallback, useState} from 'react';
-
-import {createGlobalStore} from 'hox';
 import {useAppContext} from "../appContext/useAppContext";
-import {useErrorMessage} from "./useErrorMessage";
+import {createContainer} from "unstated-next";
+import {ErrorMessageStore} from "./ErrorMessageStore";
 
 
-export const [useStore] = createGlobalStore(() => {
+export const MainStore = createContainer(() => {
     const [user, _setUser] = useState<string>();
-    const {setErrorMessage} = useErrorMessage();
+    const {setErrorMessage} = ErrorMessageStore.useContainer();
     const {name} = useAppContext();
     const setUser = useCallback((user: string) => {
         if (new Date().getTime() % 2 === 0) {
@@ -15,6 +14,6 @@ export const [useStore] = createGlobalStore(() => {
         } else {
             _setUser(`${user}.${name}`);
         }
-    }, []);
+    }, [name]);
     return {user, setUser}
 });
