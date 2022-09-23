@@ -3,17 +3,26 @@ import './Hello.pcss';
 import {User} from "./User";
 import {HoxRoot} from "hox";
 import {AppContext} from './appContext/useAppContext';
+import {useErrorMessage} from "./store/useErrorMessage";
 
-type Props = {};
+const ShowError = () => {
+    const {errorMessage} = useErrorMessage();
+    return <div>Error happens: {errorMessage}</div>
+}
 
-export const Hello: FC<Props> = ({}) => {
+export const Hello: FC = ({}) => {
     const [name, setName] = useState<string>('')
 
-    return <AppContext.Provider value={{name}}>
+    return <>
         <HoxRoot>
-            <div>Name: {name}</div>
-            <input type={'text'} value={name} onChange={event => setName(event.target.value)}/>
-            <User/>
+            <ShowError/>
         </HoxRoot>
-    </AppContext.Provider>
+        <AppContext.Provider value={{name}}>
+            <HoxRoot>
+                <div>Name: {name}</div>
+                <input type={'text'} value={name} onChange={event => setName(event.target.value)}/>
+                <User/>
+            </HoxRoot>
+        </AppContext.Provider>
+    </>
 }

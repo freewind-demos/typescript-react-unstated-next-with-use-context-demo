@@ -1,11 +1,20 @@
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 
 import {createGlobalStore} from 'hox';
 import {useAppContext} from "../appContext/useAppContext";
+import {useErrorMessage} from "./useErrorMessage";
 
 
 export const [useStore] = createGlobalStore(() => {
-    const [user, setUser] = useState<string>();
+    const [user, _setUser] = useState<string>();
+    const {setErrorMessage} = useErrorMessage();
     const {name} = useAppContext();
-    return {user, setUser: (user: string) => setUser(`${user}.${name}`)}
+    const setUser = useCallback((user: string) => {
+        if (new Date().getTime() % 2 === 0) {
+            setErrorMessage('Random error')
+        } else {
+            _setUser(`${user}.${name}`);
+        }
+    }, []);
+    return {user, setUser}
 });
